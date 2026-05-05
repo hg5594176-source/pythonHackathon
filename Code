@@ -22,4 +22,3 @@ plt.legend()
 plt.show()
 
 print(f"Average Marks: {df['Marks'].mean():.2f}")
-print(f"Correlation: {df['StudyHours'].corr(df['Marks']):.2f}")
