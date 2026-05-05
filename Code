@@ -1,0 +1,25 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    'StudyHours': np.random.uniform(1, 10, 100).round(1),
+    'Marks': np.random.randint(30, 100, 100).astype(float)
+})
+
+df.iloc[0:3, 1] = np.nan
+df = df.fillna(df.mean())
+
+print(df.describe())
+
+df.plot.scatter(x='StudyHours', y='Marks', title='Study Hours vs Marks', color='blue')
+plt.show()
+
+df['Marks'].hist(bins=10, color='orange', edgecolor='black')
+plt.axvline(df['Marks'].mean(), color='red', linestyle='--', label='Mean')
+plt.title('Marks Distribution')
+plt.legend()
+plt.show()
+
+print(f"Average Marks: {df['Marks'].mean():.2f}")
+print(f"Correlation: {df['StudyHours'].corr(df['Marks']):.2f}")
